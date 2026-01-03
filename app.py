@@ -21,8 +21,6 @@ st.markdown("""
 
 hide_streamlit_elements = """
     <style>
-    /* Hide the main hamburger menu */
-    #MainMenu {visibility: hidden !important;}
     
     /* Hide the toolbar (new in recent versions) */
     .stToolbar {display: none !important;}
