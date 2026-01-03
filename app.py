@@ -10,12 +10,7 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 # --------------------------------------------------
 # Hide hamburger menu, footer, header, and toolbar completely
 # Hide Streamlit's top-right menu (hamburger ☰), Manage app, Deploy button, toolbar, footer, etc.
-st.set_page_config(
-    page_title="INSECTIFICA",
-    page_icon="🐞",
-    layout="centered",  # Changed to "wide" for larger screens; mobile adjustments via CSS
-    initial_sidebar_state="collapsed"
-)
+
 st.markdown("""
 <style>
 [data-testid="stToolbar"] {display: none !important;}
@@ -63,7 +58,12 @@ st.markdown("""
 # Page configuration - using "wide" for better use of space on desktop,
 # while CSS will ensure it remains user-friendly on mobile
 
-
+st.set_page_config(
+    page_title="INSECTIFICA",
+    page_icon="🐞",
+    layout="centered",  # Changed to "wide" for larger screens; mobile adjustments via CSS
+    initial_sidebar_state="collapsed"
+)
 
 # --------------------------------------------------
 # Custom CSS - Enhanced for better mobile & desktop responsiveness
@@ -228,7 +228,7 @@ st.markdown("""
 # --------------------------------------------------
 # Load Data & Model
 # --------------------------------------------------
-with open("e:/Isect pest/pest.json", "r") as f:
+with open("pest.json", "r") as f:
     insect_data = json.load(f)
 
 class_names = [
@@ -267,7 +267,7 @@ class_names = [
 @st.cache_resource
 def load_tflite_model():
     interpreter = tf.lite.Interpreter(
-        model_path="e:/Isect pest/mobilenetv2_insect.tflite"
+        model_path="mobilenetv2_insect.tflite"
     )
     interpreter.allocate_tensors()
     return interpreter
